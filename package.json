@@ -1,0 +1,43 @@
+{
+  "name": "babel-plugin-transform-inline-vue-template",
+  "version": "1.0.0",
+  "description": "Babel plugin for transforming HTML imports to inline Vue render functions",
+  "main": "dist/plugin.js",
+  "repository": "https://github.com/kasperisager/babel-plugin-transform-inline-vue-template",
+  "author": "Kasper Isager <kasperisager@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "xo && ava",
+    "prepare": "babel src -d dist"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "xo": {
+    "space": true
+  },
+  "dependencies": {
+    "micromatch": "^3.1.0",
+    "vue-template-es2015-compiler": "^1.6.0"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "babel-template": "^6.26.0",
+    "vue-template-compiler": "^2.5.2",
+    "xo": "^0.18.2"
+  },
+  "peerDependencies": {
+    "vue-template-compiler": "^2.5.2"
+  }
+}
