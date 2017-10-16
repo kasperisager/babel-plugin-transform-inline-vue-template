@@ -6,7 +6,7 @@ import {compile} from 'vue-template-compiler';
 import transpile from 'vue-template-es2015-compiler';
 
 function toFunction(code) {
-  return transpile(`function render(){${code}}`);
+  return `function render(_h,_vm=this){${code}}`;
 }
 
 export default function () {
@@ -38,14 +38,24 @@ export default function () {
 
         const {name} = node.specifiers[0].local;
 
-        link.replaceWith(template(`
-            var ${name} = {
-              render: ${toFunction(compiled.render)},
-              staticRenderFns: [
-                ${compiled.staticRenderFns.map(toFunction).join(',')}
-              ]
+        link.replaceWith(template(
+          transpile(
+            `
+              var ${name} = {
+                render: ${toFunction(compiled.render)},
+                staticRenderFns: [
+                  ${compiled.staticRenderFns.map(toFunction).join(',')}
+                ],
+                _compiled: true
+              }
+            `,
+            {
+              transforms: {
+                stripWithFunctional: true
+              }
             }
-        `)());
+          )
+        )());
       }
     }
   };

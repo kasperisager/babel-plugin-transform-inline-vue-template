@@ -24,6 +24,7 @@
     "space": true
   },
   "dependencies": {
+    "babel-template": "^6.26.0",
     "micromatch": "^3.1.0",
     "vue-template-es2015-compiler": "^1.6.0"
   },
@@ -33,7 +34,6 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
-    "babel-template": "^6.26.0",
     "vue-template-compiler": "^2.5.2",
     "xo": "^0.18.2"
   },
